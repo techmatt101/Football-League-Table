@@ -106,7 +106,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FootballLeagueTable\FootballLeagueTable.csproj">
+    <ProjectReference Include="..\src\FootballLeagueTable.csproj">
       <Project>{206FAC11-40B3-422F-B0AD-F6782F6C6719}</Project>
       <Name>FootballLeagueTable</Name>
     </ProjectReference>

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagueTable", "FootballLeagueTable\FootballLeagueTable.csproj", "{206FAC11-40B3-422F-B0AD-F6782F6C6719}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagueTable", "src\FootballLeagueTable.csproj", "{206FAC11-40B3-422F-B0AD-F6782F6C6719}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagueTable.Tests", "FootballLeagueTable.Tests\FootballLeagueTable.Tests.csproj", "{EBD0536C-C703-4929-9928-D35AA379CDE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeagueTable.Tests", "test\FootballLeagueTable.Tests.csproj", "{EBD0536C-C703-4929-9928-D35AA379CDE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
