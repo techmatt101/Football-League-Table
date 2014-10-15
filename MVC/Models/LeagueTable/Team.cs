@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FootballLeagueTable.Models
+namespace FootballLeagueTable.Models.LeagueTable
 {
     public class Team
     {
@@ -9,6 +9,10 @@ namespace FootballLeagueTable.Models
         [Required]
         public string Name { get; set; }
 
+        //public int Position { get; set; }
+
         public League League { get; set; }
+
+        public MatchHistory MatchHistory { get; set; }
     }
 }

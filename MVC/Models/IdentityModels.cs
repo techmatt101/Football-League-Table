@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using FootballLeagueTable.Models.LeagueTable;
 
 namespace FootballLeagueTable.Models
 {
@@ -9,8 +10,8 @@ namespace FootballLeagueTable.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<FootballLeagueTable.Models.League> Leagues { get; set; }
-        public System.Data.Entity.DbSet<FootballLeagueTable.Models.MatchHistory> MatchHistories { get; set; }
-        public System.Data.Entity.DbSet<FootballLeagueTable.Models.Team> Teams { get; set; }
+        public DbSet<League> Leagues { get; set; }
+        public DbSet<MatchHistory> MatchHistories { get; set; }
+        public DbSet<Team> Teams { get; set; }
     }
 }

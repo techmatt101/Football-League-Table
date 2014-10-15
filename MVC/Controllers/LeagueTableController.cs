@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using FootballLeagueTable.Models;
+using FootballLeagueTable.Models.LeagueTable;
 
 namespace FootballLeagueTable.Controllers
 {
@@ -20,10 +21,8 @@ namespace FootballLeagueTable.Controllers
         public ActionResult Overview()
         {
             const int leagueId = 1;
-            var teams = _db.Teams.ToArray(); //TODO: yep have no clue, but makes team names appear in data
             var league = _db.Leagues.ToList()[leagueId - 1]; //TODO: ekk if no data
-            //league.MatchHistories = _db.MatchHistories.SqlQuery("SELECT * FROM MatchHistories WHERE League_LeagueId = @leagueId", new SqlParameter("leagueId", leagueId)).ToArray();
-            league.MatchHistories = _db.MatchHistories.ToArray();
+            league.Teams = _db.Teams.SqlQuery("SELECT * FROM Teams WHERE League_LeagueId = @leagueId", new SqlParameter("leagueId", leagueId)).ToArray();
             return View(league);
         }
 
@@ -32,9 +31,11 @@ namespace FootballLeagueTable.Controllers
             return View();
         }
 
-        public ActionResult CompareTeams()
+        public ActionResult Compare()
         {
-            return View();
+            var m = _db.MatchHistories.ToArray();
+            var teams = _db.Teams.ToArray();
+            return View(new CompareView(teams[0], teams[1]));
         }
     }
 }

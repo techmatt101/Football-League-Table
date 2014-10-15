@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using FootballLeagueTable.Models.LeagueTable;
 
 namespace FootballLeagueTable.Models.Account
 {

@@ -1,12 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace FootballLeagueTable.Models
+
+namespace FootballLeagueTable.Models.LeagueTable
 {
     public class MatchHistory
     {
         public int MatchHistoryId { get; set; }
-
-        [Required]
-        public Team Team { get; set; }
 
         [Display(Name = "P")]
         public int Played { get; set; }

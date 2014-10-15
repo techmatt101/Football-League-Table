@@ -113,14 +113,19 @@
     <Compile Include="Migrations\201410150111247_init2.Designer.cs">
       <DependentUpon>201410150111247_init2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410152032072_init3.cs" />
+    <Compile Include="Migrations\201410152032072_init3.Designer.cs">
+      <DependentUpon>201410152032072_init3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\LoginView.cs" />
     <Compile Include="Models\Account\RegisterView.cs" />
     <Compile Include="Models\Account\User.cs" />
+    <Compile Include="Models\LeagueTable\CompareView.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\League.cs" />
-    <Compile Include="Models\MatchHistory.cs" />
-    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\LeagueTable\League.cs" />
+    <Compile Include="Models\LeagueTable\MatchHistory.cs" />
+    <Compile Include="Models\LeagueTable\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -168,12 +173,15 @@
     <EmbeddedResource Include="Migrations\201410150111247_init2.resx">
       <DependentUpon>201410150111247_init2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410152032072_init3.resx">
+      <DependentUpon>201410152032072_init3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\LeagueTable\SelectTeam.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\LeagueTable\CompareTeams.cshtml" />
+    <Content Include="Views\LeagueTable\Compare.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

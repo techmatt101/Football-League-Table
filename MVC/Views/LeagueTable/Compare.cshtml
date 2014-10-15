@@ -1,0 +1,29 @@
+﻿@model FootballLeagueTable.Models.LeagueTable.CompareView
+@{
+    ViewBag.Title = "Compare Teams";
+}
+
+<h2>Compare Teams</h2>
+
+<div class="row">
+    <section class="col-md-4">
+        <h3>@Model.TeamOne.Name</h3>
+        <ul>
+            <li>@Model.TeamOne.MatchHistory.Points</li>
+        </ul>
+    </section>
+    
+    <section class="col-md-4">
+        <h3>Difference</h3>
+        <ul>
+            <li>@Model.PointDifference</li>
+        </ul>
+    </section>
+
+    <section class="col-md-4">
+        <h3>@Model.TeamTwo.Name</h3>
+        <ul>
+            <li>@Model.TeamTwo.MatchHistory.Points</li>
+        </ul>
+    </section>
+</div>
