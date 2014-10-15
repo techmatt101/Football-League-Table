@@ -1,0 +1,41 @@
+﻿@model FootballLeagueTable.Models.League
+@{
+    ViewBag.Title = @Model.Name + " League Table";
+}
+
+<h2>@Model.Name League Table</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th width="100">Position</th>
+            <th>Team</th>
+            <th width="50">@Html.DisplayNameFor(model => model.MatchHistories[0].Played)</th>
+            <th width="50">@Html.DisplayNameFor(model => model.MatchHistories[0].Won)</th>
+            <th width="50">@Html.DisplayNameFor(model => model.MatchHistories[0].Drawn)</th>
+            <th width="50">@Html.DisplayNameFor(model => model.MatchHistories[0].Lost)</th>
+            <th width="50">@Html.DisplayNameFor(model => model.MatchHistories[0].For)</th>
+            <th width="50">@Html.DisplayNameFor(model => model.MatchHistories[0].Against)</th>
+            <th width="50">@Html.DisplayNameFor(model => model.MatchHistories[0].Difference)</th>
+            <th width="50">@Html.DisplayNameFor(model => model.MatchHistories[0].Points)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var match in Model.MatchHistories) {
+            <tr>
+                <td>?</td>
+                <td>@Html.DisplayFor(modelItem => match.Team.Name)</td>
+
+                <td>@Html.DisplayFor(modelItem => match.Played)</td>
+                <td>@Html.DisplayFor(modelItem => match.Won)</td>
+                <td>@Html.DisplayFor(modelItem => match.Drawn)</td>
+                <td>@Html.DisplayFor(modelItem => match.Lost)</td>
+                <td>@Html.DisplayFor(modelItem => match.For)</td>
+                <td>@Html.DisplayFor(modelItem => match.Against)</td>
+                <td>@Html.DisplayFor(modelItem => match.Difference)</td>
+                <td>@Html.DisplayFor(modelItem => match.Points)</td>
+            </tr>
+        }
+    </tbody>
+</table>

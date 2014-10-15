@@ -1,2 +1,2 @@
-Football-League-Table
+Football League Table
 =====================
