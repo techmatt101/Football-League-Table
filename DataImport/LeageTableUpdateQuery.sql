@@ -22,7 +22,7 @@
 --DECLARE @Points int;
 --SET @Points = 99;
 
---DECLARE @Name nvarchar(MAX);
+--DECLARE @Team nvarchar(MAX);
 --SET @Team = 'TestTeam';
 
 
