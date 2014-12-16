@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FootballLeagueTable.helpers
+namespace FootballLeagueTable.Helpers
 {
     public static class HtmlExtensions
     {

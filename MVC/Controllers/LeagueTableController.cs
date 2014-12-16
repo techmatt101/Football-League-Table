@@ -20,7 +20,8 @@ namespace FootballLeagueTable.Controllers
         }
 
         public ActionResult SelectTeam() {
-            return View();
+            var teams = _db.Teams.ToArray();
+            return View(new SelectTeamView(teams, new UserFollowings()));
         }
 
         public ActionResult Compare() {

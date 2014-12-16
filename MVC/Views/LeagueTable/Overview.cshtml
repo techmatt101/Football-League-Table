@@ -1,4 +1,4 @@
-﻿@using FootballLeagueTable.helpers
+﻿@using FootballLeagueTable.Helpers
 @using FootballLeagueTable.Models.LeagueTable
 @model FootballLeagueTable.Models.LeagueTable.League
 @{
@@ -44,8 +44,8 @@
                 </abbr>
             </th>
             <th width="50">
-                <abbr title="@Html.DescriptionFor(model => matchHistory.Difference)">
-                    @Html.DisplayNameFor(model => matchHistory.Difference)
+                <abbr title="@Html.DescriptionFor(model => matchHistory.GoalDifference)">
+                    @Html.DisplayNameFor(model => matchHistory.GoalDifference)
                 </abbr>
             </th>
             <th width="50">
@@ -68,7 +68,7 @@
                 <td>@Html.DisplayFor(modelItem => team.MatchHistory.Lost)</td>
                 <td>@Html.DisplayFor(modelItem => team.MatchHistory.For)</td>
                 <td>@Html.DisplayFor(modelItem => team.MatchHistory.Against)</td>
-                <td>@Html.DisplayFor(modelItem => team.MatchHistory.Difference)</td>
+                <td>@Html.DisplayFor(modelItem => team.MatchHistory.GoalDifference)</td>
                 <td>@Html.DisplayFor(modelItem => team.MatchHistory.Points)</td>
             </tr>
         }

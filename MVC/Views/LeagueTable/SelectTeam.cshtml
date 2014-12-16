@@ -1,19 +1,20 @@
-﻿@{
+﻿@model FootballLeagueTable.Models.LeagueTable.SelectTeamView
+@{
     ViewBag.Title = "SelectTeam";
+    
+    var validationStyles = new { @class = "text-danger" };
 }
 
-@using (Html.BeginForm("SelectTeam", "LeagueTable", new {}, FormMethod.Post, new {@class = "form-horizontal", role = "form"})) {
+@using (Html.BeginForm("SelectTeam", "LeagueTable", FormMethod.Post, new {@class = "form-horizontal", role = "form"})) {
+    @Html.ValidationSummary(true, "", validationStyles)
+
     <h2>Select a Team to Follow</h2>
-@*    <input class="typeahead" id="followingTeam" type="text" placeholder="Team to Follow">*@
-    <select id="followingTeam">
-        <option></option>
-        <option>MK Dons</option>
-    </select>
+    @Html.LabelFor(model => model.FollowingTeamList);
+    @Html.DropDownListFor(model => model.FollowingTeamList, Model.FollowingTeamList)
 
     <h2>Select a Rival Team to Follow</h2>
-@*    <input class="typeahead" id="rivalTeam" type="text" placeholder="Rival Team">*@
-    <select id="rivalTeam">
-        <option></option>
-        <option>MK Dons</option>
-    </select>
+    @Html.LabelFor(model => model.RivalTeamList);
+    @Html.DropDownListFor(model => model.FollowingTeamList, Model.RivalTeamList)
+
+    <input type="submit" value="Save" class="btn btn-default" />
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FootballLeagueTable.Models.LeagueTable
 {
@@ -6,6 +7,7 @@ namespace FootballLeagueTable.Models.LeagueTable
     {
         public int MatchHistoryId { get; set; }
 
+        [Index]
         [Display(Name = "Position")]
         public int Position { get; set; }
 
@@ -28,7 +30,7 @@ namespace FootballLeagueTable.Models.LeagueTable
         public int Against { get; set; }
 
         [Display(Name = "GD", Description = "Goal difference")]
-        public int Difference { get; set; }
+        public int GoalDifference { get; set; }
 
         [Display(Name = "Pts", Description = "Points")]
         public int Points { get; set; }
