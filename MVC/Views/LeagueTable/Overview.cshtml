@@ -1,40 +1,75 @@
-﻿@model FootballLeagueTable.Models.LeagueTable.League
+﻿@using FootballLeagueTable.helpers
+@using FootballLeagueTable.Models.LeagueTable
+@model FootballLeagueTable.Models.LeagueTable.League
 @{
     ViewBag.Title = @Model.Name + " League Table";
 }
+@{ MatchHistory matchHistory = null; }
 
 <h2>@Model.Name League Table</h2>
 
 <table class="table">
     <thead>
         <tr>
-            <th width="100">Position</th>
+            <th width="100">@Html.DisplayNameFor(model => matchHistory.Position)</th>
             <th>Team</th>
-            <th width="50">@Html.DisplayNameFor(model => model.Teams[0].MatchHistory.Played)</th>
-            <th width="50">@Html.DisplayNameFor(model => model.Teams[0].MatchHistory.Won)</th>
-            <th width="50">@Html.DisplayNameFor(model => model.Teams[0].MatchHistory.Drawn)</th>
-            <th width="50">@Html.DisplayNameFor(model => model.Teams[0].MatchHistory.Lost)</th>
-            <th width="50">@Html.DisplayNameFor(model => model.Teams[0].MatchHistory.For)</th>
-            <th width="50">@Html.DisplayNameFor(model => model.Teams[0].MatchHistory.Against)</th>
-            <th width="50">@Html.DisplayNameFor(model => model.Teams[0].MatchHistory.Difference)</th>
-            <th width="50">@Html.DisplayNameFor(model => model.Teams[0].MatchHistory.Points)</th>
+            <th width="50">
+                <abbr title="@Html.DescriptionFor(model => matchHistory.Played)">
+                    @Html.DisplayNameFor(model => matchHistory.Played)
+                </abbr>
+            </th>
+            <th width="50">
+                <abbr title="@Html.DescriptionFor(model => matchHistory.Won)">
+                    @Html.DisplayNameFor(model => matchHistory.Won)
+                </abbr>
+            </th>
+            <th width="50">
+                <abbr title="@Html.DescriptionFor(model => matchHistory.Drawn)">
+                    @Html.DisplayNameFor(model => matchHistory.Drawn)
+                </abbr>
+            </th>
+            <th width="50">
+                <abbr title="@Html.DescriptionFor(model => matchHistory.Lost)">
+                    @Html.DisplayNameFor(model => matchHistory.Lost)
+                </abbr>
+            </th>
+            <th width="50">
+                <abbr title="@Html.DescriptionFor(model => matchHistory.For)">
+                    @Html.DisplayNameFor(model => matchHistory.For)
+                </abbr>
+            </th>
+            <th width="50">
+                <abbr title="@Html.DescriptionFor(model => matchHistory.Against)">
+                    @Html.DisplayNameFor(model => matchHistory.Against)
+                </abbr>
+            </th>
+            <th width="50">
+                <abbr title="@Html.DescriptionFor(model => matchHistory.Difference)">
+                    @Html.DisplayNameFor(model => matchHistory.Difference)
+                </abbr>
+            </th>
+            <th width="50">
+                <abbr title="@Html.DescriptionFor(model => matchHistory.Points)">
+                    @Html.DisplayNameFor(model => matchHistory.Points)
+                </abbr>
+            </th>
         </tr>
     </thead>
 
     <tbody>
-        @foreach (var match in Model.Teams) {
+        @foreach (var team in Model.Teams) {
             <tr>
-                <td>?</td>
-                <td>@Html.DisplayFor(modelItem => match.Name)</td>
+                <td>@Html.DisplayFor(modelItem => team.MatchHistory.Position)</td>
+                <td>@Html.DisplayFor(modelItem => team.Name)</td>
 
-                <td>@Html.DisplayFor(modelItem => match.MatchHistory.Played)</td>
-                <td>@Html.DisplayFor(modelItem => match.MatchHistory.Won)</td>
-                <td>@Html.DisplayFor(modelItem => match.MatchHistory.Drawn)</td>
-                <td>@Html.DisplayFor(modelItem => match.MatchHistory.Lost)</td>
-                <td>@Html.DisplayFor(modelItem => match.MatchHistory.For)</td>
-                <td>@Html.DisplayFor(modelItem => match.MatchHistory.Against)</td>
-                <td>@Html.DisplayFor(modelItem => match.MatchHistory.Difference)</td>
-                <td>@Html.DisplayFor(modelItem => match.MatchHistory.Points)</td>
+                <td>@Html.DisplayFor(modelItem => team.MatchHistory.Played)</td>
+                <td>@Html.DisplayFor(modelItem => team.MatchHistory.Won)</td>
+                <td>@Html.DisplayFor(modelItem => team.MatchHistory.Drawn)</td>
+                <td>@Html.DisplayFor(modelItem => team.MatchHistory.Lost)</td>
+                <td>@Html.DisplayFor(modelItem => team.MatchHistory.For)</td>
+                <td>@Html.DisplayFor(modelItem => team.MatchHistory.Against)</td>
+                <td>@Html.DisplayFor(modelItem => team.MatchHistory.Difference)</td>
+                <td>@Html.DisplayFor(modelItem => team.MatchHistory.Points)</td>
             </tr>
         }
     </tbody>

@@ -6,28 +6,31 @@ namespace FootballLeagueTable.Models.LeagueTable
     {
         public int MatchHistoryId { get; set; }
 
-        [Display(Name = "P")]
+        [Display(Name = "Position")]
+        public int Position { get; set; }
+
+        [Display(Name = "P", Description = "Matches played")]
         public int Played { get; set; }
 
-        [Display(Name = "W")]
+        [Display(Name = "W", Description = "Matches won")]
         public int Won { get; set; }
 
-        [Display(Name = "D")]
+        [Display(Name = "D", Description = "Matches drawn")]
         public int Drawn { get; set; }
 
-        [Display(Name = "L")]
+        [Display(Name = "L", Description = "Matches lost")]
         public int Lost { get; set; }
 
-        [Display(Name = "F")]
+        [Display(Name = "F", Description = "Matches goals for")]
         public int For { get; set; }
 
-        [Display(Name = "A")]
+        [Display(Name = "A", Description = "Matches goals against")]
         public int Against { get; set; }
 
-        [Display(Name = "GD")]
+        [Display(Name = "GD", Description = "Goal difference")]
         public int Difference { get; set; }
 
-        [Display(Name = "Pts")]
+        [Display(Name = "Pts", Description = "Points")]
         public int Points { get; set; }
     }
 }
