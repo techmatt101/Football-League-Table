@@ -130,10 +130,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\FootballLeagueTable.Models.ApplicationDbContext.mdf" />
+    <Content Include="Content\football-bg.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Styles\Bootstrap.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -151,7 +151,6 @@
     <Content Include="Views\Shared\_LoginNavPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>

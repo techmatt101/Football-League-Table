@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Team Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     @Styles.Render("~/Content/css")
 </head>
 <body>
@@ -15,11 +16,10 @@
         @RenderBody()
     </div>
 
-    <footer class="container">
+    <footer class="container" id="main-footer">
         <small>&copy; @DateTime.Now.Year <b>Team Tracker</b> by Matthew J Kemp K013317A</small>
     </footer>
 
-    @*@Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>

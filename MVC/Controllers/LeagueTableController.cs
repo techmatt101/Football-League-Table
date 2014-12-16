@@ -21,7 +21,7 @@ namespace FootballLeagueTable.Controllers
         public ActionResult Overview()
         {
             const int leagueId = 1;
-            var a = _db.MatchHistories.ToList(); /TODO: how does this even fix the fixxing data?
+            var a = _db.MatchHistories.ToList(); //TODO: how does this even fix the fixxing data?
             var league = _db.Leagues.ToList()[leagueId - 1]; //TODO: ekk if no data
             league.Teams =  _db.Teams.Where(team => team.League.LeagueId == leagueId).ToArray();
             return View(league);
