@@ -6,8 +6,7 @@
         public Team TeamTwo;
         public int PointDifference;
 
-        public CompareView(Team teamOne, Team teamTwo)
-        {
+        public CompareView(Team teamOne, Team teamTwo) {
             TeamOne = teamOne;
             TeamTwo = teamTwo;
 

@@ -1,14 +1,14 @@
-﻿@*@using Microsoft.AspNet.Identity*@
-@**@
-@*@if (Request.IsAuthenticated) {*@
-@*    <ul class="nav navbar-nav navbar-right">*@
-@*        <li>Hello @User.Identity.GetUserName()</li>*@
-@*        <li>@Html.ActionLink("Logout", "Logout", "Account", routeValues: null, htmlAttributes: new { id = "logoutLink" })</li>*@
-@*    </ul>*@
-@*}*@
-@*else {*@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated) {
+    <ul class="nav navbar-nav navbar-right">
+        <li><p class="navbar-text">Signed in as <a href="#" class="navbar-link"><b>@User.Identity.GetUserName()</b></a></p></li>
+        <li>@Html.ActionLink("Logout", "Logout", "Account", routeValues: null, htmlAttributes: new { id = "logoutLink" })</li>
+    </ul>
+}
+else {
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
-@*}*@
+}
