@@ -1,4 +1,7 @@
-﻿--DECLARE @Played int;
+﻿--DECLARE @Place int;
+--SET @Place = 1;
+
+--DECLARE @Played int;
 --SET @Played = 1;
 
 --DECLARE @Won int;
@@ -16,8 +19,8 @@
 --DECLARE @Against int;
 --SET @Against = 6;
 
---DECLARE @Difference int;
---SET @Difference = 7;
+--DECLARE @GoalDifference int;
+--SET @GoalDifference = 7;
 
 --DECLARE @Points int;
 --SET @Points = 99;
@@ -31,13 +34,13 @@ SET @TeamId = (SELECT MatchHistory_MatchHistoryId FROM Teams WHERE Name = @Team)
 
 IF @TeamId IS NOT NULL
 	BEGIN
-		UPDATE MatchHistories SET "Played" = @Played, "Won" = @Won, "Drawn" = @Drawn, "Lost" = @Lost, "For" = @For, "Against" = @Against, "Difference" = @Difference, "Points" = @Points
+		UPDATE MatchHistories SET "Played" = @Played, "Won" = @Won, "Drawn" = @Drawn, "Lost" = @Lost, "For" = @For, "Against" = @Against, "GoalDifference" = @GoalDifference, "Points" = @Points
 		WHERE MatchHistoryId = @TeamId
 	END
 ELSE
 	BEGIN
-		INSERT INTO MatchHistories ("Played", "Won", "Drawn", "Lost", "For", "Against", "Difference", "Points")
-		VALUES (@Played, @Won, @Drawn, @Lost, @For, @Against, @Difference, @Points)
+		INSERT INTO MatchHistories ("Position", "Played", "Won", "Drawn", "Lost", "For", "Against", "GoalDifference", "Points")
+		VALUES (@Place, @Played, @Won, @Drawn, @Lost, @For, @Against, @GoalDifference, @Points)
 
 		INSERT INTO Teams ("Name", "League_LeagueId", "MatchHistory_MatchHistoryId")
 		VALUES (@Team, 1, @@IDENTITY)
