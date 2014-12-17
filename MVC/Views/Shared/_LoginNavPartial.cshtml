@@ -2,7 +2,7 @@
 
 @if (Request.IsAuthenticated) {
     <ul class="nav navbar-nav navbar-right">
-        <li><p class="navbar-text">Signed in as <a href="#" class="navbar-link"><b>@User.Identity.GetUserName()</b></a></p></li>
+        <li><p class="navbar-text"><small>Signed in as</small> <strong>@Html.ActionLink(@User.Identity.GetUserName(), "SelectTeam", "LeagueTable", routeValues: null, htmlAttributes: new { @class = "navbar-link" })</strong></li>
         <li>@Html.ActionLink("Logout", "Logout", "Account", routeValues: null, htmlAttributes: new { id = "logoutLink" })</li>
     </ul>
 }

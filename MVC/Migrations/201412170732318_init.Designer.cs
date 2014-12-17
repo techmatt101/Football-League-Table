@@ -7,13 +7,13 @@ namespace FootballLeagueTable.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class indexingpos : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(indexingpos));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412162014345_indexing-pos"; }
+            get { return "201412170732318_init"; }
         }
         
         string IMigrationMetadata.Source

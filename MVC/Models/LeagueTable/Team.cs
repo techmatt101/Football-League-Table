@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FootballLeagueTable.Models.LeagueTable
 {
@@ -9,10 +10,17 @@ namespace FootballLeagueTable.Models.LeagueTable
         [Required]
         public string Name { get; set; }
 
-        //public int Position { get; set; }
+        [Required]
+        public int LeagueId { get; set; }
 
-        public League League { get; set; }
+        [ForeignKey("LeagueId")]
+        public virtual League League { get; set; }
 
-        public MatchHistory MatchHistory { get; set; }
+
+        [Required]
+        public int MatchHistoryId { get; set; }
+
+        [ForeignKey("MatchHistoryId")]
+        public virtual MatchHistory MatchHistory { get; set; }
     }
 }

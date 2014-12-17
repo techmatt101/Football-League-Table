@@ -7,13 +7,13 @@ namespace FootballLeagueTable.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class AddingposistiontoMatchHistory : IMigrationMetadata
+    public sealed partial class AddedLeague : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddingposistiontoMatchHistory));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedLeague));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412161634271_Adding posistion to Match History"; }
+            get { return "201412170913422_AddedLeague"; }
         }
         
         string IMigrationMetadata.Source

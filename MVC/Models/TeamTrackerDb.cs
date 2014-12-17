@@ -1,14 +1,11 @@
 ﻿using System.Data.Entity;
+using FootballLeagueTable.Models.Account;
 using FootballLeagueTable.Models.LeagueTable;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FootballLeagueTable.Models
 {
-    public class ApplicationUser : IdentityUser
-    {
-    }
-
-    public class TeamTrackerDb : IdentityDbContext<ApplicationUser>
+    public class TeamTrackerDb : IdentityDbContext<UserAccount>
     {
         public TeamTrackerDb() : base("TeamTrackerDemoDb") {
         }

@@ -6,13 +6,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("TeamTracker", "Index", "Home", routeValues: null, htmlAttributes: new {@class = "navbar-brand"})
+            @Html.ActionLink("Team Tracker", "Index", "Home", routeValues: null, htmlAttributes: new {@class = "navbar-brand"})
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("League Table", "Overview", "LeagueTable")</li>
                 @if (Request.IsAuthenticated) {
-                    <li>@Html.ActionLink("Select Team", "SelectTeam", "LeagueTable")</li>
+                    <li>@Html.ActionLink("My Teams", "SelectTeam", "LeagueTable")</li>
                     <li>@Html.ActionLink("Compare Teams", "Compare", "LeagueTable")</li>
                 }
             </ul>

@@ -125,29 +125,34 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlExtensions.cs" />
-    <Compile Include="Migrations\201412161121293_init.cs" />
-    <Compile Include="Migrations\201412161121293_init.Designer.cs">
-      <DependentUpon>201412161121293_init.cs</DependentUpon>
+    <Compile Include="Migrations\201412170732318_init.cs" />
+    <Compile Include="Migrations\201412170732318_init.Designer.cs">
+      <DependentUpon>201412170732318_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201412161634271_Adding posistion to Match History.cs" />
-    <Compile Include="Migrations\201412161634271_Adding posistion to Match History.Designer.cs">
-      <DependentUpon>201412161634271_Adding posistion to Match History.cs</DependentUpon>
+    <Compile Include="Migrations\201412170741110_UserFollowings.cs" />
+    <Compile Include="Migrations\201412170741110_UserFollowings.Designer.cs">
+      <DependentUpon>201412170741110_UserFollowings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201412161847188_Renamed Differnece to Goal Difference.cs" />
-    <Compile Include="Migrations\201412161847188_Renamed Differnece to Goal Difference.Designer.cs">
-      <DependentUpon>201412161847188_Renamed Differnece to Goal Difference.cs</DependentUpon>
+    <Compile Include="Migrations\201412170817219_UserAccount.cs" />
+    <Compile Include="Migrations\201412170817219_UserAccount.Designer.cs">
+      <DependentUpon>201412170817219_UserAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201412162014345_indexing-pos.cs" />
-    <Compile Include="Migrations\201412162014345_indexing-pos.Designer.cs">
-      <DependentUpon>201412162014345_indexing-pos.cs</DependentUpon>
+    <Compile Include="Migrations\201412170844337_Tweaks.cs" />
+    <Compile Include="Migrations\201412170844337_Tweaks.Designer.cs">
+      <DependentUpon>201412170844337_Tweaks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412170913422_AddedLeague.cs" />
+    <Compile Include="Migrations\201412170913422_AddedLeague.Designer.cs">
+      <DependentUpon>201412170913422_AddedLeague.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\LoginView.cs" />
     <Compile Include="Models\Account\RegisterView.cs" />
+    <Compile Include="Models\Account\UserAccount.cs" />
     <Compile Include="Models\LeagueTable\SelectTeamView.cs" />
     <Compile Include="Models\LeagueTable\UserFollowings.cs" />
     <Compile Include="Models\LeagueTable\CompareView.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\TeamTrackerDb.cs" />
     <Compile Include="Models\LeagueTable\League.cs" />
     <Compile Include="Models\LeagueTable\MatchHistory.cs" />
     <Compile Include="Models\LeagueTable\Team.cs" />
@@ -198,17 +203,20 @@
     <Content Include="Views\LeagueTable\Compare.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412161121293_init.resx">
-      <DependentUpon>201412161121293_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412170732318_init.resx">
+      <DependentUpon>201412170732318_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412161634271_Adding posistion to Match History.resx">
-      <DependentUpon>201412161634271_Adding posistion to Match History.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412170741110_UserFollowings.resx">
+      <DependentUpon>201412170741110_UserFollowings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412161847188_Renamed Differnece to Goal Difference.resx">
-      <DependentUpon>201412161847188_Renamed Differnece to Goal Difference.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412170817219_UserAccount.resx">
+      <DependentUpon>201412170817219_UserAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412162014345_indexing-pos.resx">
-      <DependentUpon>201412162014345_indexing-pos.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412170844337_Tweaks.resx">
+      <DependentUpon>201412170844337_Tweaks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412170913422_AddedLeague.resx">
+      <DependentUpon>201412170913422_AddedLeague.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

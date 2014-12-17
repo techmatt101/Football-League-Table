@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FootballLeagueTable.Models.LeagueTable
 {
@@ -13,12 +14,13 @@ namespace FootballLeagueTable.Models.LeagueTable
         [Display(Name = "Goal Difference")]
         public int GoalDifference;
 
+
         public CompareView(Team teamOne, Team teamTwo) {
             TeamOne = teamOne;
             TeamTwo = teamTwo;
 
-            PointDifference = TeamOne.MatchHistory.Points - TeamTwo.MatchHistory.Points;
-            GoalDifference = TeamOne.MatchHistory.GoalDifference - TeamTwo.MatchHistory.GoalDifference;
+            PointDifference = Math.Abs(TeamOne.MatchHistory.Points - TeamTwo.MatchHistory.Points);
+            GoalDifference = Math.Abs(TeamOne.MatchHistory.GoalDifference - TeamTwo.MatchHistory.GoalDifference);
         }
     }
 }

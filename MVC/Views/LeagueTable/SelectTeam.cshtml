@@ -2,19 +2,32 @@
 @{
     ViewBag.Title = "SelectTeam";
     
-    var validationStyles = new { @class = "text-danger" };
+    //var validationStyles = new { @class = "text-danger" };
+    var inputStyles = new { @class = "form-control" };
 }
 
-@using (Html.BeginForm("SelectTeam", "LeagueTable", FormMethod.Post, new {@class = "form-horizontal", role = "form"})) {
-    @Html.ValidationSummary(true, "", validationStyles)
+<h2>My Teams</h2>
+<hr />
 
-    <h2>Select a Team to Follow</h2>
-    @Html.LabelFor(model => model.FollowingTeamList);
-    @Html.DropDownListFor(model => model.FollowingTeamList, Model.FollowingTeamList)
+@using (Html.BeginForm("SelectTeam", "LeagueTable", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
+    //@Html.ValidationSummary(true, "", validationStyles)
 
-    <h2>Select a Rival Team to Follow</h2>
-    @Html.LabelFor(model => model.RivalTeamList);
-    @Html.DropDownListFor(model => model.FollowingTeamList, Model.RivalTeamList)
+    <h4>Select League</h4>
+    @Html.LabelFor(model => model.SelectedLeague);
+    @Html.DropDownListFor(model => model.SelectedLeague, Model.LeagueList, inputStyles)
 
+    <br />
+
+    <h4>Select a Team to Follow</h4>
+    @Html.LabelFor(model => model.SelectedFollowingTeam);
+    @Html.DropDownListFor(model => model.SelectedFollowingTeam, Model.FollowingTeamList, inputStyles)
+
+    <br/>
+    
+    <h4>Select a Rival Team to Follow</h4>
+    @Html.LabelFor(model => model.SelectedRivalTeam);
+    @Html.DropDownListFor(model => model.SelectedRivalTeam, Model.RivalTeamList, inputStyles)
+
+    <br/>
     <input type="submit" value="Save" class="btn btn-default" />
 }

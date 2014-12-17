@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using FootballLeagueTable.Models;
+using FootballLeagueTable.Models.LeagueTable;
 using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -11,14 +12,14 @@ namespace FootballLeagueTable.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        public AccountController() : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TeamTrackerDb()))) {
+        public AccountController() : this(new UserManager<UserAccount>(new UserStore<UserAccount>(new TeamTrackerDb()))) {
         }
 
-        public AccountController(UserManager<ApplicationUser> userManager) {
+        public AccountController(UserManager<UserAccount> userManager) {
             UserManager = userManager;
         }
 
-        public UserManager<ApplicationUser> UserManager { get; private set; }
+        public UserManager<UserAccount> UserManager { get; private set; }
 
         private IAuthenticationManager AuthManager {
             get { return HttpContext.GetOwinContext().Authentication; }
@@ -37,7 +38,7 @@ namespace FootballLeagueTable.Controllers
                 var user = UserManager.Find(model.Username, model.Password);
                 if (user != null) {
                     SignIn(user, true);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Overview", "LeagueTable");
                 }
                 else {
                     ModelState.AddModelError("", "Invalid username or password.");
@@ -57,14 +58,19 @@ namespace FootballLeagueTable.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterView model) {
             if (ModelState.IsValid) {
-                var user = new ApplicationUser() {
+                var user = new UserAccount() {
                     UserName = model.Username,
-                    Email = model.Email
+                    Email = model.Email,
+                    UserFollowings = new UserFollowings() {
+                        FollowingTeamId = 1,
+                        RivalTeamId = 2
+                    }
                 };
                 var result = UserManager.Create(user, model.Password);
                 if (result.Succeeded) {
                     SignIn(user, true);
-                    return RedirectToAction("Index", "Home");
+
+                    return RedirectToAction("SelectTeam", "LeagueTable");
                 }
                 else {
                     AddModelErrors(result);
@@ -79,9 +85,9 @@ namespace FootballLeagueTable.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        private void SignIn(ApplicationUser user, bool isPersistent) {
+        private void SignIn(UserAccount userAccount, bool isPersistent) {
             AuthManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-            var identity = UserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+            var identity = UserManager.CreateIdentity(userAccount, DefaultAuthenticationTypes.ApplicationCookie);
             AuthManager.SignIn(new AuthenticationProperties() {IsPersistent = isPersistent}, identity);
         }
 

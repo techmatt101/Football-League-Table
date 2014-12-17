@@ -30,7 +30,7 @@
 
 
 DECLARE @TeamId int;
-SET @TeamId = (SELECT MatchHistory_MatchHistoryId FROM Teams WHERE Name = @Team);
+SET @TeamId = (SELECT MatchHistoryId FROM Teams WHERE Name = @Team);
 
 IF @TeamId IS NOT NULL
 	BEGIN
@@ -42,6 +42,6 @@ ELSE
 		INSERT INTO MatchHistories ("Position", "Played", "Won", "Drawn", "Lost", "For", "Against", "GoalDifference", "Points")
 		VALUES (@Place, @Played, @Won, @Drawn, @Lost, @For, @Against, @GoalDifference, @Points)
 
-		INSERT INTO Teams ("Name", "League_LeagueId", "MatchHistory_MatchHistoryId")
+		INSERT INTO Teams ("Name", "LeagueId", "MatchHistoryId")
 		VALUES (@Team, 1, @@IDENTITY)
 	END
