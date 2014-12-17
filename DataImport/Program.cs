@@ -12,8 +12,6 @@ namespace FootballLeagueTable.DataImport
         private const string DbCatalog = @"TeamTrackerDemoDb";
         private const string DbPath = @"C:\Users\Matthew\Documents\GitHub\Football-League-Table\MVC\App_Data\" + DbCatalog + ".mdf";
 
-        private static Dictionary<string, Boolean> _columnsTable = new Dictionary<string, bool>();
-        private static string[] _columns;
 
         private static int Main(string[] args) {
             if (args.Length == 0 || !args[0].EndsWith(".csv")) {
@@ -39,30 +37,35 @@ namespace FootballLeagueTable.DataImport
                 return 1;
             }
 
-            var values = line.Split(',');
+            var columns = line.Split(',');
+            var leagueTable = new List<LeagueTableRow>();
 
-            _columns = new string[values.Length];
+            // Read Values
+            var lineNumber = 1;
+            while (!sr.EndOfStream) {
+                var values = sr.ReadLine().Split(',');
+                lineNumber++;
 
-            // Required Columns
-            _columnsTable.Add("@Won", false);
-            _columnsTable.Add("@Drawn", false);
-            _columnsTable.Add("@Lost", false);
-            _columnsTable.Add("@For", false);
-            _columnsTable.Add("@Against", false);
+                //skip blank lines
+                if (values.Length == 0) {
+                    continue;
+                }
 
-            for (var i = 0; i < values.Length; i++) {
-                var columnKey = GetColumnKey(values[i]);
-                _columns[i] = columnKey;
-                if(columnKey != null)
-                    _columnsTable[columnKey] = true;
+                if (values.Length != columns.Length) {
+                    Console.WriteLine(new WarningException("Syntax Error on line " + lineNumber + ". Skipping line for data import."));
+                    continue;
+                }
+
+                var newLeagueTable = new LeagueTableRow();
+                for (var i = 0; i < values.Length; i++) {
+                    InsertData(values[i], columns[i], newLeagueTable, lineNumber != 2);
+                }
+
+                if (newLeagueTable.Team == "") 
+                    continue;
+
+                leagueTable.Add(newLeagueTable);
             }
-
-            if (_columnsTable.ContainsValue(false)) {
-                var missingColumns = string.Join(", ", (from column in _columnsTable where !column.Value select column.Key));
-                Console.Error.WriteLine("Missing Required Columns " + missingColumns);
-                return 1;
-            }
-
 
             //Import Data
             using (var sqlCon = new SqlConnection(@"Data Source=(LocalDb)\v11.0;AttachDbFilename=" + DbPath + ";Initial Catalog=" + DbCatalog + ";Integrated Security=True")) {
@@ -77,28 +80,19 @@ namespace FootballLeagueTable.DataImport
 
                 var query = File.ReadAllText(@"C:\Users\Matthew\Documents\GitHub\Football-League-Table\DataImport\LeageTableUpdateQuery.sql");
 
-                var lineNumber = 1;
-                while (!sr.EndOfStream) {
-                    values = sr.ReadLine().Split(',');
-                    lineNumber++;
-
-                    //skip blank lines
-                    if (values.Length == 0) {
-                        continue;
-                    }
-
-                    if (values.Length != _columns.Length) {
-                        Console.WriteLine(new WarningException("Syntax Error on line " + lineNumber + ". Skipping line for data import."));
-                        continue;
-                    }
-
+                for (var i = 0; i < leagueTable.Count; i++) {
                     var command = new SqlCommand(query, sqlCon);
 
-                    for (var i = 0; i < values.Length; i++) {
-                        if (_columns[i] == null)
-                            continue;
-                        command.Parameters.AddWithValue(_columns[i], values[i]);
-                    }
+                    command.Parameters.AddWithValue("@Team", leagueTable[i].Team);
+                    command.Parameters.AddWithValue("@Position", i);
+                    command.Parameters.AddWithValue("@Played", leagueTable[i].GetPlayed());
+                    command.Parameters.AddWithValue("@Won", leagueTable[i].Won);
+                    command.Parameters.AddWithValue("@Drawn", leagueTable[i].Drawn);
+                    command.Parameters.AddWithValue("@Lost", leagueTable[i].Lost);
+                    command.Parameters.AddWithValue("@For", leagueTable[i].For);
+                    command.Parameters.AddWithValue("@Against", leagueTable[i].Against);
+                    command.Parameters.AddWithValue("@GoalDifference", leagueTable[i].GetGoalDifference());
+                    command.Parameters.AddWithValue("@Points", leagueTable[i].GetPoints());
 
                     try {
                         command.ExecuteNonQuery();
@@ -118,55 +112,62 @@ namespace FootballLeagueTable.DataImport
             return 0;
         }
 
-        private static string GetColumnKey(string value) {
-            switch (value.ToLower()) {
-                case "place":
-                case "pos":
-                case "position":
-                    return "@Place";
-
+        private static void InsertData(string value, string column, LeagueTableRow leagueTableRow, Boolean silence = false)
+        {
+            switch (column.ToLower()) {
                 case "team":
-                    return "@Team";
-
-                case "p":
-                case "played":
-                    return "@Played";
+                    leagueTableRow.Team = value.Replace('_', ' ').Replace('-', ' ');
+                    break;
 
                 case "w":
                 case "won":
                 case "win":
-                    return "@Won";
+                    leagueTableRow.Won = Convert.ToInt32(value);
+                    break;
 
                 case "d":
                 case "draw":
                 case "drawn":
-                    return "@Drawn";
+                    leagueTableRow.Drawn = Convert.ToInt32(value);
+                    break;
 
                 case "l":
                 case "lost":
                 case "lose":
-                    return "@Lost";
+                    leagueTableRow.Lost = Convert.ToInt32(value);
+                    break;
 
                 case "f":
                 case "for":
-                    return "@For";
+                    leagueTableRow.For = Convert.ToInt32(value);
+                    break;
 
                 case "a":
                 case "against":
-                    return "@Against";
+                    leagueTableRow.Against = Convert.ToInt32(value);
+                    break;
+
+                case "place":
+                case "pos":
+                case "position":
+
+                case "p":
+                case "played":
 
                 case "gd":
                 case "goal difference":
-                    return "@GoalDifference";
 
                 case "pts":
                 case "points":
                 case "score":
-                    return "@Points";
+                    if (!silence)
+                        Console.WriteLine(new WarningException("Column '" + column + "' ignored. Skipping column for data import."));
+                    break;
 
                 default:
-                    Console.WriteLine(new WarningException("Column '" + value + "' not supported. Skipping column for data import."));
-                    return null;
+                    if (!silence)
+                        Console.WriteLine(new WarningException("Column '" + column + "' not supported. Skipping column for data import."));
+                    break;
             }
         }
     }

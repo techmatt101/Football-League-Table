@@ -1,5 +1,5 @@
-﻿--DECLARE @Place int;
---SET @Place = 1;
+﻿--DECLARE @Position int;
+--SET @Position = 1;
 
 --DECLARE @Played int;
 --SET @Played = 1;
@@ -40,7 +40,7 @@ IF @TeamId IS NOT NULL
 ELSE
 	BEGIN
 		INSERT INTO MatchHistories ("Position", "Played", "Won", "Drawn", "Lost", "For", "Against", "GoalDifference", "Points")
-		VALUES (@Place, @Played, @Won, @Drawn, @Lost, @For, @Against, @GoalDifference, @Points)
+		VALUES (@Position, @Played, @Won, @Drawn, @Lost, @For, @Against, @GoalDifference, @Points)
 
 		INSERT INTO Teams ("Name", "LeagueId", "MatchHistoryId")
 		VALUES (@Team, 1, @@IDENTITY)
